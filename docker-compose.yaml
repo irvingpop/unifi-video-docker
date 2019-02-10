@@ -15,8 +15,8 @@ services:
       - 7446:7446
       - 7447:7447
     volumes:
-      - ./run/data:/var/lib/unifi-video
-      - ./run/videos:/var/lib/unifi-video/videos
+      - /atlas/unifi-video/data:/var/lib/unifi-video
+      - /atlas/unifi-video/videos:/var/lib/unifi-video/videos
     tmpfs:
       - /var/cache/unifi-video
     environment:
@@ -25,3 +25,5 @@ services:
       - CREATE_TMPFS=no
     cap_add:
       - DAC_READ_SEARCH
+    security_opt:
+      - apparmor:unconfined
